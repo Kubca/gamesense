@@ -5,6 +5,8 @@
 -- [[ GS DEPENDENCIES ]]
 
 local surface = require 'gamesense/surface' -- Library for custom font rendering ^^
+
+-- [[ JUST A COOL CONSOLE PRINT ]] -- 
 client.exec('clear')
 client.color_log(182, 231, 23, '[gamesense] ---------------------------------------------------------------------------- [gamesense]')
 client.color_log(3, 255, 255, [[
