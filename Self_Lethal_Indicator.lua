@@ -75,6 +75,7 @@ Indicator = function()
 
     local correct_x = 430
     local correct_y = 330
+    local Show_HP = tostring(player_hp)..' HP'
 
 
     -- [[ COLORS ]] --
@@ -125,30 +126,30 @@ Indicator = function()
         if Indicator_HP then
             if ComboBox == 'Lowercase' then
                 surface.draw_text(real_x, real_y, r, g, b, a, font, 'lethal')
-                surface.draw_text(real_x, real_y+15+font_size/2, r_, g_, b_, a, font, tostring(player_hp)..' HP')
+                surface.draw_text(real_x, real_y+15+font_size/2, r_, g_, b_, a, font, Show_HP)
             elseif ComboBox == 'Uppercase' then
                 surface.draw_text(real_x, real_y, r, g, b, a, font, 'LETHAL')
-                surface.draw_text(real_x, real_y+15+font_size/2, r_, g_, b_, a, font, tostring(player_hp)..' HP')
+                surface.draw_text(real_x, real_y+15+font_size/2, r_, g_, b_, a, font, Show_HP)
             elseif ComboBox == 'Normal' then
                 surface.draw_text(real_x, real_y, r, g, b, a, font, 'Lethal')
-                surface.draw_text(real_x, real_y+15+font_size/2, r_, g_, b_, a, font, tostring(player_hp)..' HP')
+                surface.draw_text(real_x, real_y+15+font_size/2, r_, g_, b_, a, font, Show_HP)
             elseif ComboBox == 'Custom Text' then
                 if text_input == '' then
                     surface.draw_text(real_x, real_y, 255, 0, 0, a, font, 'Input a text!')
                 else
                     surface.draw_text(real_x, real_y, r, g, b, a, font, text_input)
                 end
-                surface.draw_text(real_x, real_y+15+font_size/2, r_, g_, b_, a, font, tostring(player_hp)..' HP')
+                surface.draw_text(real_x, real_y+15+font_size/2, r_, g_, b_, a, font, Show_HP)
             elseif ComboBox == 'Custom Text Skeet' then
                 if text_input == '' then
                     renderer.text(real_x, real_y, 255, 0, 0, a, '-', 0, string.upper('Input a text!'))
                 else
                     renderer.text(real_x, real_y, r, g, b, a, '-', 0, string.upper(text_input))
                 end
-                renderer.text(real_x, real_y+10, r_, g_, b_, a, '-', 0, tostring(player_hp)..' HP')
+                renderer.text(real_x, real_y+10, r_, g_, b_, a, '-', 0, Show_HP)
             elseif ComboBox == 'Skeet Small' then
                 renderer.text(real_x, real_y, r, g, b, a, '-', 0, 'LETHAL')
-                renderer.text(real_x, real_y+10, r_, g_, b_, a, '-', 0, tostring(player_hp)..' HP')
+                renderer.text(real_x, real_y+10, r_, g_, b_, a, '-', 0, Show_HP)
             end
         else
             if ComboBox == 'Lowercase' then
