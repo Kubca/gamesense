@@ -187,7 +187,8 @@ end
 
 client.set_event_callback('paint',function()
     local is_alive = entity.is_alive(entity.get_local_player())
-    if is_alive then
+    local is_menu_open = ui.is_menu_open()
+    if is_alive or is_menu_open then
         Indicator()
     end
 end)
