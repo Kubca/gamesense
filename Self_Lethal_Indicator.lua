@@ -24,19 +24,24 @@ client.color_log(182, 231, 23, '[gamesense] ------------------------------------
 
 -- [[ MENU VARS ]] --
 
-local cool_label = ui.new_label('VISUALS', 'Other ESP', '☚ SELF LETHAL INDICATOR ☛')
+local MenuVars = {
 
-local lethal_indi = ui.new_checkbox('VISUALS', 'Other ESP', 'Enable Lethal Indicator')
-local lethal_indi_hp = ui.new_checkbox('VISUALS', 'Other ESP', 'Show HP')
-local color_label = ui.new_label('VISUALS', 'Other ESP', 'Lethal Indicator Color')
-local color_picker = ui.new_color_picker('VISUALS', 'Other ESP', 'Lethal Indicator Color', 3, 168, 245, 255)
-local alpha_combo = ui.new_combobox('VISUALS', 'Other ESP', 'Lethal Indicator Color Style', {'Static', 'Fade', 'Rainbow', 'Rainbow Fade'})
-local case_combo = ui.new_combobox('VISUALS', 'Other ESP', 'Lethal Indicator Letter Options', {'Lowercase', 'Uppercase', 'Normal', 'Skeet Small', 'Custom Text', 'Custom Text Skeet'})
-local size_text = ui.new_slider('VISUALS', 'Other ESP', 'Lethal Indicator Font Size', 11, 100, 12, true, '')
-local textbox_label = ui.new_label('VISUALS', 'Other ESP', 'Enter Custom Text')
-local textbox = ui.new_textbox('VISUALS', 'Other ESP', 'Enter Custom Text')
+    cool_label = ui.new_label('VISUALS', 'Other ESP', '☚ SELF LETHAL INDICATOR ☛'),
 
-local cool_label2 = ui.new_label('VISUALS', 'Other ESP', '☚ SELF LETHAL INDICATOR ☛')
+    lethal_indi = ui.new_checkbox('VISUALS', 'Other ESP', 'Enable Lethal Indicator'),
+    lethal_indi_hp = ui.new_checkbox('VISUALS', 'Other ESP', 'Show HP'),
+    color_label = ui.new_label('VISUALS', 'Other ESP', 'Lethal Indicator Color'),
+    color_picker = ui.new_color_picker('VISUALS', 'Other ESP', 'Lethal Indicator Color', 3, 168, 245, 255),
+    alpha_combo = ui.new_combobox('VISUALS', 'Other ESP', 'Lethal Indicator Color Style', {'Static', 'Fade', 'Rainbow', 'Rainbow Fade'}),
+    case_combo = ui.new_combobox('VISUALS', 'Other ESP', 'Lethal Indicator Letter Options', {'Lowercase', 'Uppercase', 'Normal', 'Skeet Small', 'Custom Text', 'Custom Text Skeet'}),
+    size_text = ui.new_slider('VISUALS', 'Other ESP', 'Lethal Indicator Font Size', 11, 100, 12, true, ''),
+    textbox_label = ui.new_label('VISUALS', 'Other ESP', 'Enter Custom Text'),
+    textbox = ui.new_textbox('VISUALS', 'Other ESP', 'Enter Custom Text'),
+    
+    cool_label2 = ui.new_label('VISUALS', 'Other ESP', '☚ SELF LETHAL INDICATOR ☛'),
+    
+}
+
 
 -- [[ GLOBALS ]] --
 
@@ -64,12 +69,13 @@ Indicator = function()
     local is_menu_open = ui.is_menu_open()
     local mouse_pos_x, mouse_pos_y = ui.mouse_position()
 
-    local font_size = ui.get(size_text)
-    local text_input = ui.get(textbox)
-    local Alpha = ui.get(alpha_combo)
-    local Indicator_toggle = ui.get(lethal_indi) 
-    local Indicator_HP = ui.get(lethal_indi_hp)
-    local ComboBox = ui.get(case_combo)
+    local font_size = ui.get(MenuVars.size_text)
+    local text_input = ui.get(MenuVars.textbox)
+    local Alpha = ui.get(MenuVars.alpha_combo)
+    local Indicator_toggle = ui.get(MenuVars.lethal_indi) 
+    local Indicator_HP = ui.get(MenuVars.lethal_indi_hp)
+    local ComboBox = ui.get(MenuVars.case_combo)
+    local color_r, color_g, color_b, color_a = ui.get(MenuVars.color_picker)
 
     local font = surface.create_font('Arial', font_size, 50, {0x200})
     local player_hp = entity.get_prop(entity.get_local_player(), 'm_iHealth')
@@ -110,15 +116,15 @@ Indicator = function()
     
 
     if Alpha == 'Static' then
-        r, g, b, a = ui.get(color_picker)
+        r, g, b, a = color_r, color_g, color_b, color_a
     elseif Alpha == 'Fade' then
-        r, g, b = ui.get(color_picker)
+        r, g, b = color_r, color_g, color_b
         a = math_a
     elseif Alpha == 'Rainbow' then
-        r, g, b, a = ui.get(color_picker)
+        r, g, b, a = color_r, color_g, color_b, color_a
         r, g, b = r - r + math_r, g - g + math_g, b - b + math_b
     elseif Alpha == 'Rainbow Fade' then
-        r, g, b, a = ui.get(color_picker)
+        r, g, b, a = color_r, color_g, color_b, color_a
         r, g, b, a = r - r + math_r, g - g + math_g, b - b + math_b, a - a + math_a
     end
 
