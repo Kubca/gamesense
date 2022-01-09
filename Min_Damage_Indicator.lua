@@ -96,4 +96,4 @@ end
 client.set_event_callback("paint", Damage_Indi) -- callback function
 
 
--- BOOOM THAT WAS REALLY HARD to code :(
+-- BOOOM useless shit but its for people that do not use sigma adaptive :(
