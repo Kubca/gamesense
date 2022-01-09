@@ -63,7 +63,6 @@ Indicator = function()
     local player_hp = entity.get_prop(entity.get_local_player(), 'm_iHealth')
     local is_menu_open = ui.is_menu_open()
     local mouse_pos_x, mouse_pos_y = ui.mouse_position()
-    local font = surface.create_font('Arial', font_size, 50, {0x200})
 
     local font_size = ui.get(size_text)
     local text_input = ui.get(textbox)
@@ -76,6 +75,7 @@ Indicator = function()
     local correct_x = 430
     local correct_y = 330
     local Show_HP = tostring(player_hp)..' HP'
+    local font = surface.create_font('Arial', font_size, 50, {0x200})
 
 
     -- [[ COLORS ]] --
