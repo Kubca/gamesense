@@ -88,7 +88,7 @@ Damage_Indi = function()
 
     -- [[ INDICATOR ]] --
 
-    if bind and alive then -- checking if you pressed the toggle hotkey and if you alive
+    if bind and alive or is_menu_open then -- checking if you pressed the toggle hotkey and if you alive
         renderer.text(x + 20, y - 20, r, g, b, a, '-', 0, tostring(min_dmg)) -- rendering the min dmg value on your screen 
     end    
 end
